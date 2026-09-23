@@ -1,0 +1,53 @@
+class FilaDeAtendimento {
+
+    constructor() {
+        this.pacientes = [];
+        this.proximaSenha = 1;
+    }
+
+    entrarNaFila(nome) {
+        let paciente = {
+            nome: nome,
+            senha: this.proximaSenha
+        };
+
+        this.pacientes.push(paciente);
+
+        console.log(`${nome} entrou na fila. Senha: ${this.proximaSenha}\n`);
+
+        this.proximaSenha++;
+    }
+
+    chamarProximo() {
+        if (this.pacientes.length === 0) {
+            console.log("Não há pacientes na fila.\n");
+            return;
+        }
+
+        let paciente = this.pacientes.shift();
+
+        console.log(`Chamando ${paciente.nome}, senha ${paciente.senha}.\n`);
+    }
+}
+
+// Casos de teste
+
+let fila = new FilaDeAtendimento();
+
+fila.entrarNaFila("Ana Souza");
+
+fila.entrarNaFila("Carlos Lima");
+
+fila.entrarNaFila("Beatriz Rocha");
+
+fila.chamarProximo();
+
+fila.chamarProximo();
+
+fila.entrarNaFila("Diego Alves");
+
+fila.chamarProximo();
+
+fila.chamarProximo();
+
+fila.chamarProximo();
